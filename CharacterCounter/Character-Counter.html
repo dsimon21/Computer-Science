@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #FFF; 
+            }
+            .letterDisplay{
+                width: 60px;
+                height: 60px;
+                border-radius:50%;
+                background-color: grey;
+                display: inline-block;
+                border: 2px dashed blue;
+            }
+            .box,textarea{
+                width: 300px;
+                height: 400px;
+                background-color: grey;
+                border: 2px dashed blue;
+                display: inline-block;
+            }
+            .button{
+                width:150px;
+                height:30px;
+                border-radius: 10%;
+                background-color: blue;
+                border: 2px dashed grey;
+                display: inline-block;
+                color:white;
+                cursor:pointer;
+            }
+                    
+        </style>
+        <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+        
+        <script>
+            $(document).ready(function(){
+                $("#sortButton").click(function(){
+                    alert("The paragraph was clicked.");
+                    
+                });
+                
+                $("#indexButton").click(function(){
+                    var text = $("#text").val();
+                    var As = 0;
+                    var Es = 0;
+                    var Is = 0;
+                    var Os = 0;
+                    var Us = 0;
+                    
+                    for(var pointer=0; pointer<text.length; pointer++){
+                        
+                        /*var letter = text.charAt(pointer);
+                        
+                        if(letter=="a"){
+                            As++;
+                            $('#aVowel').text(As);
+                        }
+                        
+                        if(letter=="e"){
+                            Es++;
+                            $('#eVowel').text(Es);
+                        }
+                        if(letter=="i"){
+                            Is++;
+                            $('#iVowel').text(Is);
+                        }
+                        if(letter=="o"){
+                            Os++;
+                            $('#oVowel').text(Os);
+                        }
+                        if(letter=="u"){
+                            Us++;
+                            $('#uVowel').text(As);
+                        } */
+                        
+                        var vowel = "a";
+                        
+                        switch (vowel) {
+                            case "a":
+                          	    As++;
+                                $('#aVowel').text(As);
+                                break;
+                            case "e":
+                                Es++;
+                                $('#eVowel').text(Es);
+                                break;
+                            case "i":
+                                Is++;
+                                $('#iVowel').text(Is);
+                                break;
+                            case "o":
+                                Os++;
+                                $('#oVowel').text(Os);
+                                break;
+                            case "u":
+                                Us++;
+                                $('#uVowel').text(Us);
+                                break;
+                          
+                        }
+                                            
+                    } 
+                     
+                });
+                
+            });
+
+        </script>
+        
+    </head>
+    
+    <table style="width:100%">
+        <tr>
+            <th>a</th>
+            <th>e</th> 
+            <th>i</th>
+            <th>o</th>
+            <th>u</th>
+            <th>characters</th>
+            <th>vowels</th>
+            <th>consonants</th>
+            <th>words</th>
+        </tr>
+        <tr>
+            <th><div id='aVowel' class='letterDisplay'></div></th>
+            <th><div id='eVowel' class='letterDisplay'></div></th> 
+            <th><div id='iVowel' class='letterDisplay'></div></th>
+            <th><div id='oVowel' class='letterDisplay'></div></th>
+            <th><div id='uVowel' class='letterDisplay'></div></th>
+            <th><div id='char' class='letterDisplay'></div></th>
+            <th><div id='vowel' class='letterDisplay'></div></th>
+            <th><div id='conso' class='letterDisplay'></div></th>
+            <th><div id='word' class='letterDisplay'></div></th>
+        </tr>
+    </table>
+    
+    <table style="width:100%">
+        <tr>
+            <th colspan="2"><div id='sortButton' class='button'>sort by frequence</div>
+            <div id='indexButton' class='button'>index</div></th>
+        </tr>
+        <tr>
+            <th><textarea id='text'></textarea></th>
+            <th><div id='box2' class='box'></div></th>
+        </tr>
+    </table>      
+    
+    </body>
+
+</html>
