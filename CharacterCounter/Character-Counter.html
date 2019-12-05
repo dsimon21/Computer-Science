@@ -48,36 +48,15 @@
                     var Is = 0;
                     var Os = 0;
                     var Us = 0;
-                    
-                    for(var pointer=0; pointer<text.length; pointer++){
+                    var numCons = 0;
+                    var cons = "bcdfghjklmkpqrstvwxyz";
+                    $('#char').append(text.length);
+
+                    for(var pointer=0; pointer<text.length; pointer++){   
                         
-                        /*var letter = text.charAt(pointer);
+                        var letter = text.charAt(pointer);
                         
-                        if(letter=="a"){
-                            As++;
-                            $('#aVowel').text(As);
-                        }
-                        
-                        if(letter=="e"){
-                            Es++;
-                            $('#eVowel').text(Es);
-                        }
-                        if(letter=="i"){
-                            Is++;
-                            $('#iVowel').text(Is);
-                        }
-                        if(letter=="o"){
-                            Os++;
-                            $('#oVowel').text(Os);
-                        }
-                        if(letter=="u"){
-                            Us++;
-                            $('#uVowel').text(As);
-                        } */
-                        
-                        var vowel = "a";
-                        
-                        switch (vowel) {
+                        switch (letter) {
                             case "a":
                           	    As++;
                                 $('#aVowel').text(As);
@@ -98,11 +77,17 @@
                                 Us++;
                                 $('#uVowel').text(Us);
                                 break;
-                          
+                        }  
+                        if(cons.indexOf(letter)>=0){
+                            numCons++;
                         }
-                                            
+
                     } 
-                     
+                    
+                    var vows = As + Es +Is + Os + Us;
+                    $('#vowel').append(vows);            
+                    $('#conso').append(numCons);
+
                 });
                 
             });
