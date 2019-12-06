@@ -42,6 +42,8 @@
                 });
                 
                 $("#indexButton").click(function(){
+                    $('.letter Display').text('');
+
                     var text = $("#text").val();
                     var As = 0;
                     var Es = 0;
@@ -50,7 +52,8 @@
                     var Us = 0;
                     var numCons = 0;
                     var cons = "bcdfghjklmkpqrstvwxyz";
-                    $('#char').append(text.length);
+                    var numSpace = 0;
+                    $('#char').text(text.length);
 
                     for(var pointer=0; pointer<text.length; pointer++){   
                         
@@ -59,34 +62,38 @@
                         switch (letter) {
                             case "a":
                           	    As++;
-                                $('#aVowel').text(As);
                                 break;
                             case "e":
                                 Es++;
-                                $('#eVowel').text(Es);
                                 break;
                             case "i":
                                 Is++;
-                                $('#iVowel').text(Is);
                                 break;
                             case "o":
                                 Os++;
-                                $('#oVowel').text(Os);
                                 break;
                             case "u":
                                 Us++;
-                                $('#uVowel').text(Us);
                                 break;
                         }  
                         if(cons.indexOf(letter)>=0){
                             numCons++;
                         }
+                        if(letter== ' '){
+                            numSpace++;
+                        }
 
                     } 
                     
                     var vows = As + Es +Is + Os + Us;
-                    $('#vowel').append(vows);            
-                    $('#conso').append(numCons);
+                    $('#vowel').text(vows);            
+                    $('#conso').text(numCons);
+                    $('#aVowel').text(As);
+                    $('#eVowel').text(Es);
+                    $('#iVowel').text(Is);
+                    $('#oVowel').text(Os);
+                    $('#uVowel').text(Us);
+                    $('#word').text(numSpace + 1);
 
                 });
                 
