@@ -44,7 +44,8 @@
                 $("#indexButton").click(function(){
                     $('.letter Display').text('');
 
-                    var text = $("#text").val();
+                    var origText = $("#text").val();
+                    var text = origText.toLowerCase();
                     var As = 0;
                     var Es = 0;
                     var Is = 0;
@@ -52,12 +53,19 @@
                     var Us = 0;
                     var numCons = 0;
                     var cons = "bcdfghjklmkpqrstvwxyz";
-                    var numSpace = 0;
+                    
+                    var alphabet= "abcdefghijklmnopqrstuvwxyz";
+                    var numWords = 0;
+                    if(alphabet.indexOf(text.charAt(0))>=0){
+                        numWords++;
+                    }
+
                     $('#char').text(text.length);
 
                     for(var pointer=0; pointer<text.length; pointer++){   
-                        
+
                         var letter = text.charAt(pointer);
+                        var nextLetter = text.charAt(pointer+1);
                         
                         switch (letter) {
                             case "a":
@@ -75,12 +83,15 @@
                             case "u":
                                 Us++;
                                 break;
+                            case " ":
+                                if(alphabet.indexOf(nextLetter)>=0 && pointer<text.length-1){
+                                    numWords++;
+                                }
+                                break;
+
                         }  
                         if(cons.indexOf(letter)>=0){
                             numCons++;
-                        }
-                        if(letter== ' '){
-                            numSpace++;
                         }
 
                     } 
@@ -93,7 +104,7 @@
                     $('#iVowel').text(Is);
                     $('#oVowel').text(Os);
                     $('#uVowel').text(Us);
-                    $('#word').text(numSpace + 1);
+                    $('#word').text(numWords);
 
                 });
                 
