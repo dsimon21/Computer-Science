@@ -7,17 +7,29 @@ $(document).keydown(function(e) {
         case 65: // a
             if(!shiftPressed && !elsePressed){
                 elsePressed=true;
-
+                $('#bulb1 .bulb').attr("src","images/bulbOn.png");
             }
         break;
 
-        case 83: // up
+        case 83: // s
+            if(!shiftPressed && !elsePressed){
+                elsePressed=true;
+                $('#bulb2 .bulb').attr("src","images/bulbOn.png");
+            }
         break;
 
-        case 68: // right
+        case 68: // d
+            if(!shiftPressed && !elsePressed){
+                elsePressed=true;
+                $('#bulb3 .bulb').attr("src","images/bulbOn.png");
+            }
         break;
 
-        case 70: // down
+        case 70: // f
+            if(!shiftPressed && !elsePressed){
+                elsePressed=true;
+                $('#bulb4 .bulb').attr("src","images/bulbOn.png");
+            }
         break;
 
         case 16: // shift
