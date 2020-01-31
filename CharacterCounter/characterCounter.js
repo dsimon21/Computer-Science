@@ -20,7 +20,17 @@ $(document).ready(function(){
         var alphabet= "abcdefghijklmnopqrstuvwxyz";
         var numWords = 0;
         var curWord = ""
-        var words = []
+        var words = [];
+
+        
+        /*[{letter:"a",frequency:0},{letter:"e",frequency:4}]
+
+        words.push({word: wordFound, frequency:1});
+
+        words[wordIndex].frequency++;
+
+        words[1].frequency = 1;
+        words[1].letter = "f";*/
                     
         if(alphabet.indexOf(text.charAt(0))>=0){
             numWords++;
