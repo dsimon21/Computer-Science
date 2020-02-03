@@ -20,6 +20,7 @@ $(document).ready(function(){
         var alphabet= "abcdefghijklmnopqrstuvwxyz";
         var numWords = 0;
         var curWord = ""
+        var wordIndex = 0
         var words = [];
 
         
@@ -64,32 +65,35 @@ $(document).ready(function(){
                         numWords++;
                     }
                     break;
-                }  
-                        
+                } 
+                
+            if(cons.indexOf(letter)>=0){
+                numCons++;
+            }
+            
+            function myFunction(){
+                return curWord;
+            }
+
             if(alphabet.indexOf(text.charAt(pointer))>=0){
                 curWord += text.charAt(pointer);
             }
             else{
-                //if(curWord == words){
-                    //add frequency++ here
-                //}
-                //else
-                words.push(curWord)
+                console.log(curWord);
+                console.log(words.findIndex(myFunction));
+                if(words.findIndex(myFunction)>=0){
+                    wordIndex=words.findIndex(myFunction);
+                    words[wordIndex].frequency++;
+                }
+                else{
+                    words.push({word: curWord, frequency:1});
+                    console.log(words);
+                }
                 curWord="";
             }
-                        
-            if(cons.indexOf(letter)>=0){
-                numCons++;
-            }
-
-        } 
-        console.log(curWord);
-        if(curWord.length>0){
-            //add frequency check here too
-        words.push(curWord);
+        
         }
-        console.log(words);
-                    
+
         var vows = As + Es +Is + Os + Us;
         $('#vowel').text(vows);            
         $('#conso').text(numCons);
