@@ -31,7 +31,10 @@ $(document).ready(function(){
         words[wordIndex].frequency++;
 
         words[1].frequency = 1;
-        words[1].letter = "f";*/
+        words[1].letter = "f";
+        
+        var indexFound = words.findIndex(checkWord)
+        words[indexFound].f; tells the frequency of the word found */
                     
         if(alphabet.indexOf(text.charAt(0))>=0){
             numWords++;
@@ -71,28 +74,32 @@ $(document).ready(function(){
                 numCons++;
             }
             
-            function myFunction(){
-                return curWord;
+            function checkWord(words) {
+                return words.w == curWord;
             }
 
             if(alphabet.indexOf(text.charAt(pointer))>=0){
                 curWord += text.charAt(pointer);
             }
+
             else{
                 console.log(curWord);
-                console.log(words.findIndex(myFunction));
-                if(words.findIndex(myFunction)>=0){
-                    wordIndex=words.findIndex(myFunction);
-                    words[wordIndex].frequency++;
+                if(words.findIndex(checkWord)<0 && (alphabet.indexOf(curWord.charAt(0)))>=0) {
+                   words.push({word: curWord, frequency:1}); 
                 }
                 else{
-                    words.push({word: curWord, frequency:1});
-                    console.log(words);
+                    if(words.findIndex(checkWord)>=0 && (alphabet.indexOf(curWord.charAt(0)))>=0) {
+                        wordIndex=words.findIndex(checkWord);
+                        words[wordIndex].frequency++;
+                    }
                 }
                 curWord="";
+
             }
         
         }
+
+        console.log(words);
 
         var vows = As + Es +Is + Os + Us;
         $('#vowel').text(vows);            
