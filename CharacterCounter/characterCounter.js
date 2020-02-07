@@ -96,7 +96,8 @@ $(document).ready(function(){
                     }
                 }
         }
-
+        
+        //this loop is not working
         for(var p=0; p<words.length; p++){
             console.log(words.w[p]);
             $('#box2').append(words.w[p]);
