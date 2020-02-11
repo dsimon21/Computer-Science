@@ -6,6 +6,7 @@ $(document).ready(function(){
                 
     $("#indexButton").click(function(){
         $('.letter Display').text('');
+        $('#box2').text('');
 
         var origText = $("#text").val();
         var text = origText.toLowerCase();
@@ -97,10 +98,9 @@ $(document).ready(function(){
                 }
         }
         
-        //this loop is not working
         for(var p=0; p<words.length; p++){
-            console.log(words.w[p]);
-            $('#box2').append(words.w[p]);
+            console.log(words[p].w);
+            $('#box2').append("<div class='wordItem'><div class='wordz'>" + words[p].w + "</div><div class='freq'>" + words[p].f + "</div></div>");
         }
         
         console.log(words);
