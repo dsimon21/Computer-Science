@@ -7,6 +7,11 @@ $(document).ready(function(){
     $("#indexButton").click(function(){
         $('.letter Display').text('');
         $('#box2').text('');
+        order=false;
+        myFunction();
+    });
+
+    function myFunction() {
 
         var origText = $("#text").val();
         var text = origText.toLowerCase();
@@ -69,11 +74,11 @@ $(document).ready(function(){
                 curWord += text.charAt(pointer);
             }
             else{
-                if(words.findIndex(checkWord)<0 && (alphabet.indexOf(curWord.charAt(0)))>=0) {
-                   words.push({w: curWord, f:1}); 
+                if(words.findIndex(checkWord)<0 && (alphabet.indexOf(curWord.charAt(0)))>=0 && curWord.length>0) {
+                   words.push({w: curWord, f:1});
                 }
                 else{
-                    if(words.findIndex(checkWord)>=0 && (alphabet.indexOf(curWord.charAt(0)))>=0) {
+                    if(words.findIndex(checkWord)>=0 && (alphabet.indexOf(curWord.charAt(0)))>=0 && curWord.length>0) {
                         wordIndex=words.findIndex(checkWord);
                         words[wordIndex].f++;
                     }
@@ -86,7 +91,7 @@ $(document).ready(function(){
 
         var end= (text.length-1);
 
-        if(alphabet.indexOf(text.charAt(end))>=0){
+        if(alphabet.indexOf(text.charAt(end))>=0 && curWord.length>0){
             if(words.findIndex(checkWord)<0 && (alphabet.indexOf(curWord.charAt(0)))>=0) {
                 words.push({w: curWord, f:1}); 
             }
@@ -97,12 +102,17 @@ $(document).ready(function(){
                     }
                 }
         }
-        
-        for(var p=0; p<words.length; p++){
-            console.log(words[p].w);
-            $('#box2').append("<div class='wordItem'><div class='wordz'>" + words[p].w + "</div><div class='freq'>" + words[p].f + "</div></div>");
+
+        if(!order){
+            for(var p=0; p<words.length; p++){
+                console.log(words[p].w);
+                $('#box2').append("<div class='wordItem'><div class='wordz'>" + words[p].w + "</div><div class='freq'>" + words[p].f + "</div></div>");
+            }
         }
-        
+        else{
+            //put code to order by prequency here
+        }
+    
         console.log(words);
 
         var vows = As + Es +Is + Os + Us;
@@ -114,7 +124,7 @@ $(document).ready(function(){
         $('#oVowel').text(Os);
         $('#uVowel').text(Us);
         $('#word').text(numWords);
-
-    });
+    
+    }   
                 
 });
