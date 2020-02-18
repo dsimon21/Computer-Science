@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
     $("#sortButton").click(function(){
-                    
+        $('.letter Display').text('');
+        $('#box2').text('');
+        order=true;
+        myFunction();           
     });
                 
     $("#indexButton").click(function(){
@@ -110,7 +113,15 @@ $(document).ready(function(){
             }
         }
         else{
-            //put code to order by prequency here
+            var list=[]
+            freqence=1
+            for(var p=0; p<words.length; p++){
+                if(word[p].f==frequence){
+                    list.push({w: curWord, f:frequence})
+                }
+                frequence++
+            }
+            console.log(list);
         }
     
         console.log(words);
