@@ -108,23 +108,18 @@ $(document).ready(function(){
 
         if(!order){
             for(var p=0; p<words.length; p++){
-                console.log(words[p].w);
                 $('#box2').append("<div class='wordItem'><div class='wordz'>" + words[p].w + "</div><div class='freq'>" + words[p].f + "</div></div>");
             }
         }
         else{
-            var list=[]
-            freqence=1
-            for(var p=0; p<words.length; p++){
-                if(word[p].f==frequence){
-                    list.push({w: curWord, f:frequence})
-                }
-                frequence++
+            function reorder() {
+                words.sort(function(w1, w2){return w2.f-w1.f});
             }
-            console.log(list);
+            reorder();
+            for(var p=0; p<words.length; p++){    
+                $('#box2').append("<div class='wordItem'><div class='wordz'>" + words[p].w + "</div><div class='freq'>" + words[p].f + "</div></div>");
+            }
         }
-    
-        console.log(words);
 
         var vows = As + Es +Is + Os + Us;
         $('#vowel').text(vows);            
