@@ -26,7 +26,7 @@ $(document).ready(function(){
         var Us = 0;
         var numCons = 0;
         var cons = "bcdfghjklmkpqrstvwxyz";
-        var alphabet= "abcdefghijklmnopqrstuvwxyz";
+        var alphabet= "abcdefghijklmnopqrstuvwxyz'";
         var numWords = 0;
         var curWord = ""
         var wordIndex = 0
