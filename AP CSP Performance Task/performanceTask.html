@@ -9,39 +9,49 @@
                 width: 300px;
                 height: 100px;
                 border: 2px solid black;
+                display: inline-block;
             }
             #listBox{
                 width: 300px;
-                height: 400px;
-                border: 2px solid black;
-                position: absolute;
-                    right: 100px
-            }
-            #titleBox{
-                width: 300px;
-                height: 50px;
-                border: 2px solid black;
-                position: absolute;
-                    right: 600px
-            }
-            #rulesBox{
-                width: 500px
                 height: 100px;
                 border: 2px solid black;
-                position: absolute;
-                    top: 450px
-                    right: 500px
+                display: inline-block;
+                
             }
+            
         </style>
         <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
     
     </head>
 
-    <div id='titleBox'>INSERT TITLE</div>
-    <div id=rulesBox'></div>
-    <textarea id='nameBox'></textarea>
-    <div id='listBox'> </div>
+    <table style="width:100%"border>
+        <tr>
+            <th>INSERT TITLE</th>
+        </tr>
+        <tr>
+            <th>RULES:</th>
+        </tr>
+        <tr>
+            <th> 1. A coach can "Pro-cut" once meaning skip to the front of the line once. </th>
+        </tr>
+        <tr>
+            <th> 2. A skater's music that has not yet been played will be played before a skater's music is repeated. </th>
+        </tr>
+        <tr>
+            <th> 3. All other skaters will be placed at the end of the line. </th>
+        </tr>
+    </table>
 
+    <table style="width:100%"border>
+        <tr>
+            <th> Enter the Line </th>
+            <th> The Line </th>
+        </tr>
+        <tr>
+            <th> <textarea id='nameBox'></textarea> </th>
+            <th><div id='listBox'> </div></th>
+        </tr>
+    </table>
 
 </body>
     <script src="performanceTask.js"></script>
