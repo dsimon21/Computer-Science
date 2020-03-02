@@ -5,6 +5,11 @@
             body{
                 background-color: #FFF; 
             }
+            #spaceBox{
+                width: 300px:
+                height: 100px;
+                display: inline-block;
+            }
             #nameBox{
                 width: 300px;
                 height: 100px;
@@ -13,10 +18,27 @@
             }
             #listBox{
                 width: 300px;
-                height: 100px;
+                height: 270px;
                 border: 2px solid black;
                 display: inline-block;         
             }
+            #button{
+                width: 125px;
+                height: 40px;
+                border: 2px solid black;
+                display: inline-block;
+                border-radius: 15%;
+                background-color: blue;
+                color: white;
+                line-height: 40px;
+                cursor:pointer;
+            }
+            .nameItem{
+                width: 300px;
+                height: 40px;
+                border-bottom: 1px dotted black;
+                padding: 2px;
+                box-sizing: border-box;
             
         </style>
         <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
@@ -39,17 +61,22 @@
         <tr>
             <th> 3. All other skaters will be placed at the end of the line. </th>
         </tr>
+        <tr>
+            <th> <div id=spaceBox></div></th>
+        </tr>
     </table>
 
-    <table style="width:100%"border>
+    <table style="width:100%">
         <tr>
             <th> Enter the Line </th>
             <th> The Line </th>
         </tr>
         <tr>
             <th> <textarea id='nameBox'></textarea> </th>
-            <th><div id='listBox'> </div></th>
+            <th rowspan="2"><div id='listBox'> </div></th>
         </tr>
+        <tr>
+            <th> <div id='button'>submit</div></th>
     </table>
 
 </body>
