@@ -9,20 +9,47 @@ $(document).ready(function(){
         var name = origText.toLowerCase();
         var line = [];
         var coaches = ["coach", "coach1", "coach2", "coach3"];
-
+        
         function rule1(){
             if(line.includes(name)){
                 rule3();
             }
             else{
-                position=0
-                pointer=line.length
-                //check if first in line is coach if not, name becomes first otherwise whck next.
+                if(coaches.includes(line[0])){
+                    if(coaches.includes(line[1])){
+                        if(coaches.includes(line[2])){
+                            if(coaches.includes(line[3])){
+
+                            }
+                            else{
+                                line.splice(3,name);
+                            }
+                        }
+                        else{
+                            line.splice(2,name);
+                        }
+                    }
+                    else{
+                        line.splice(1,name);
+                    }
+                }
+                else{
+                    line.unshift(name);
+                }
             }
         }
 
         function rule2(){
-
+            for(var p=0; p<line.length; p++){
+                removedName=line[p]
+                line.splice(p,1)
+                if(line.includes(name)){
+                    line.splice(p,name);
+                    //need to get out of loop here if this does not happen
+                    line.splice(p+1,removedName);
+                }
+                else line.splice(p,removedName);
+            }
         }
 
         function rule3(){
@@ -34,10 +61,10 @@ $(document).ready(function(){
         }
         else{
             if(line.includes(name)){
-                rule2();
+                rule3();
             }
             else{
-                rule3();
+                rule2();
             }
         }
 
