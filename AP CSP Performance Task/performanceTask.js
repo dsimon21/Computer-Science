@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#button").click(function(){
-        $('listBox').text('');
+        $('#listBox').text('');
         myFunction(); 
     });
     
@@ -9,70 +9,68 @@ $(document).ready(function(){
         var name = origText.toLowerCase();
         var line = [];
         var coaches = ["coach", "coach1", "coach2", "coach3"];
+        found = false;
         
-        function rule1(){
-            if(line.includes(name)){
-                rule3();
-            }
-            else{
-                if(coaches.includes(line[0])){
-                    if(coaches.includes(line[1])){
-                        if(coaches.includes(line[2])){
-                            if(coaches.includes(line[3])){
-
-                            }
-                            else{
-                                line.splice(3,name);
-                            }
+        /*function rule1(){
+            if(coaches.includes(line[0])){
+                if(coaches.includes(line[1])){
+                    if(coaches.includes(line[2])){
+                        if(coaches.includes(line[3])){
+                            line.splice(3,name);
                         }
                         else{
-                            line.splice(2,name);
+                            line.splice(4,name);
                         }
                     }
                     else{
-                        line.splice(1,name);
+                        line.splice(2,name);
                     }
                 }
                 else{
-                    line.unshift(name);
+                    line.splice(1,name);
                 }
+            }
+            else{
+                line.unshift(name);
             }
         }
 
         function rule2(){
-            for(var p=0; p<line.length; p++){
+            while (!found){
                 removedName=line[p]
                 line.splice(p,1)
-                if(line.includes(name)){
+                if(line.includes(removedName)){
                     line.splice(p,name);
-                    //need to get out of loop here if this does not happen
                     line.splice(p+1,removedName);
+                    found=true;
                 }
                 else line.splice(p,removedName);
+                p++
             }
         }
 
         function rule3(){
-            line.push(name);
+            */line.push(name);/*
         }
         
-        if(coaches.includes(name)){
-            rule1();
+        if(line.includes(name)){
+            rule3();
         }
         else{
-            if(line.includes(name)){
-                rule3();
+            if(coaches.includes(name)){
+                rule1();
             }
             else{
                 rule2();
             }
         }
-
+        */
+        
         console.log(line);
         for(var p=0; p<line.length; p++){
             $('#listBox').append("<div class='nameItem'>" + line[p] + "</div>");
         }
-        $('nameBox').text(''); 
+        //document.getElementById("#nameBox").value=””;
     }
 
 });
