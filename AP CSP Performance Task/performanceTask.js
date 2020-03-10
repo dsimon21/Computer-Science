@@ -20,18 +20,18 @@ $(document).ready(function(){
                 if(coaches.includes(line[1])){
                     if(coaches.includes(line[2])){
                         if(coaches.includes(line[3])){
-                            line.splice(3,name);
+                            line.splice(3,0,name);
                         }
                         else{
-                            line.splice(4,name);
+                            line.splice(4,0,name);
                         }
                     }
                     else{
-                        line.splice(2,name);
+                        line.splice(2,0,name);
                     }
                 }
                 else{
-                    line.splice(1,name);
+                    line.splice(1,0,name);
                 }
             }
             else{
@@ -43,31 +43,42 @@ $(document).ready(function(){
         function rule2(){
             console.log("rule2");
             var p=0
-            if(line.length=0){
+            if(line.length==0){
                 rule3();
-                console.log("in");
             }
             else{
-                while (!found && p<=line.length){
+                console.log(line);
+                while (!found && p<=line.length-1){
                     removedName=line[p];
                     console.log(removedName);
                     line.splice(p,1)
+                    console.log(line);
                     if(line.includes(removedName)){
-                        line.splice(p,name);
-                        line.splice(p+1,removedName);
+                        console.log("in");
+                        var newP= line.indexOf(removedName);
+                        console.log(newP);
+                        line.splice(newP,0,removedName);
+                        line.splice(newP+1,0,name);
                         found=true;
                     }
                     else{
-                        line.splice(p,removedName);
+                        console.log("in here");
+                        line.splice(p,0,removedName);
+                        console.log(line);
                         p++
                     }
+                if(line.indexOf(name)<0){
+                    line.push(name);
+                }
                 }
             }
         }
         
         function rule3(){
             console.log("rule3");
+            console.log(name);
             line.push(name);
+            console.log(line);
         }
         
         for(var pointer=0; pointer<text.length; pointer++){
@@ -79,6 +90,8 @@ $(document).ready(function(){
                 skater = ""
             }
         }
+
+        console.log(unordered);
 
         for(var p=0; p<unordered.length; p++){
             name=unordered[p];
@@ -95,6 +108,8 @@ $(document).ready(function(){
             }    
         }
         
+        console.log(line);
+
         for(var p=0; p<line.length; p++){
             $('#listBox').append("<div class='nameItem'>" + line[p] + "</div>");
         }
