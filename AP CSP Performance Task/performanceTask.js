@@ -14,31 +14,28 @@ $(document).ready(function(){
         var line = [];
         var coaches = ["coach", "coach1", "coach2", "coach3"];
         found = false;
-        done=false;
+        noCoach = false;
+        done = false;
+        var curName = "";
         
         function rule1(){
-            /*if(coaches.includes(line[0])){
-                if(coaches.includes(line[1])){
-                    if(coaches.includes(line[2])){
-                        if(coaches.includes(line[3])){
-                            line.splice(3,0,name);
-                        }
-                        else{
-                            line.splice(4,0,name);
-                        }
-                    }
-                    else{
-                        line.splice(2,0,name);
-                    }
+            console.log("rule1");
+            /*var x=0;
+            while (!noCoach && x<=coaches.length-1){
+                console.log("in");
+                curName=line.indexOf(x);
+                if(coaches.includes(curName)){
+                    x++;
                 }
                 else{
-                    line.splice(1,0,name);
+                    line.splice(x,0,name);
+                    coachFound=true;
                 }
             }
-            else{
-                line.unshift(name);
-            }*/
-            console.log("rule1");
+            if(!noCoach && x==line.length-1){
+                line.push(name);
+            }
+            coachFound=false; */
         }
 
         function rule2(){
@@ -66,12 +63,11 @@ $(document).ready(function(){
                 } 
                 if(line.indexOf(name)<0 && !done){
                     line.push(name);
-                    found=false;
                 }
                 else{
                     done=false;
-                    found=false;
                 }
+                found=false
             }
         }
         
@@ -94,7 +90,7 @@ $(document).ready(function(){
 
         for(var p=0; p<unordered.length; p++){
             name=unordered[p];
-            if(line.includes(name)){
+            if(line.includes(name) || line.length==0){
                 rule3();
             }
             else{
