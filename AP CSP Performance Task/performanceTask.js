@@ -14,6 +14,7 @@ $(document).ready(function(){
         var line = [];
         var coaches = ["coach", "coach1", "coach2", "coach3"];
         found = false;
+        done=false;
         
         function rule1(){
             /*if(coaches.includes(line[0])){
@@ -43,42 +44,40 @@ $(document).ready(function(){
         function rule2(){
             console.log("rule2");
             var p=0
+            
             if(line.length==0){
                 rule3();
             }
             else{
-                console.log(line);
                 while (!found && p<=line.length-1){
                     removedName=line[p];
-                    console.log(removedName);
-                    line.splice(p,1)
-                    console.log(line);
+                    line.splice(p,1);
                     if(line.includes(removedName)){
-                        console.log("in");
                         var newP= line.indexOf(removedName);
-                        console.log(newP);
-                        line.splice(newP,0,removedName);
+                        line.splice(p,0,removedName);
                         line.splice(newP+1,0,name);
                         found=true;
+                        done=true;
                     }
                     else{
-                        console.log("in here");
                         line.splice(p,0,removedName);
-                        console.log(line);
                         p++
                     }
-                if(line.indexOf(name)<0){
+                } 
+                if(line.indexOf(name)<0 && !done){
                     line.push(name);
+                    found=false;
                 }
+                else{
+                    done=false;
+                    found=false;
                 }
             }
         }
         
         function rule3(){
             console.log("rule3");
-            console.log(name);
             line.push(name);
-            console.log(line);
         }
         
         for(var pointer=0; pointer<text.length; pointer++){
