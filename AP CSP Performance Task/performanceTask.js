@@ -21,86 +21,50 @@ $(document).ready(function(){
         function rule1(){
             console.log("rule1");
             var x=0;
-            console.log(noCoach);
-            console.log(x);
-            while (!noCoach && x<=coaches.length-1){
-                console.log("in");
-                console.log(x);
+            while (!noCoach && x<=coaches.length-1 && x<=line.length-1){
                 curName=line[x];
                 if(coaches.includes(curName)){
                     x++;
-                    console.log("if")
                 }
                 else{
                     line.splice(x,0,name);
-                    coachFound=true;
-                    console.log("else");
+                    noCoach=true;
                 }
             }
             if(!noCoach && x==line.length-1){
                 line.push(name);
             }
-            coachFound=false;
+            noCoach=false;
         } 
-
-        /*This doesn't work because curName is undefinded when x exceeds line.length-1 and is also inefficient, coaches cannpt be added
-        function rule1(){
-            var x=0;
-            curName=line[x];
-            if(coaches.includes(curName)){
-                x++;
-                if(coaches.includes(curName)){
-                    x++;
-                    if(coaches.includes(curName)){
-                        x++;
-                    }
-                    else{
-                        line.splice(x,0,name);
-                    }
-                }
-                else{
-                    line.splice(x,0,name); 
-                    x++;
-                }
-            }
-            else{
-                line.unshift(name);
-                x++;
-            }
-        } */
 
         function rule2(){
             console.log("rule2");
             var p=0
             
-            if(line.length==0){
-                rule3();
-            }
-            else{
-                while (!found && p<=line.length-1){
-                    removedName=line[p];
-                    line.splice(p,1);
-                    if(line.includes(removedName)){
-                        var newP= line.indexOf(removedName);
-                        line.splice(p,0,removedName);
-                        line.splice(newP+1,0,name);
-                        found=true;
-                        done=true;
-                    }
-                    else{
-                        line.splice(p,0,removedName);
-                        p++
-                    }
-                } 
-                if(line.indexOf(name)<0 && !done){
-                    line.push(name);
+            while (!found && p<=line.length-1){
+                removedName=line[p];
+                line.splice(p,1);
+                if(line.includes(removedName)){
+                    var newP= line.indexOf(removedName);
+                    line.splice(p,0,removedName);
+                    line.splice(newP+1,0,name);
+                    found=true;
+                    done=true;
                 }
                 else{
-                    done=false;
+                    line.splice(p,0,removedName);
+                    p++
                 }
-                found=false
+            } 
+            if(line.indexOf(name)<0 && !done){
+                line.push(name);
             }
+            else{
+                done=false;
+            }
+            found=false
         }
+        
         
         function rule3(){
             console.log("rule3");
