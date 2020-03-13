@@ -20,23 +20,54 @@ $(document).ready(function(){
         
         function rule1(){
             console.log("rule1");
-            /*var x=0;
+            var x=0;
+            console.log(noCoach);
+            console.log(x);
             while (!noCoach && x<=coaches.length-1){
                 console.log("in");
-                curName=line.indexOf(x);
+                console.log(x);
+                curName=line[x];
                 if(coaches.includes(curName)){
                     x++;
+                    console.log("if")
                 }
                 else{
                     line.splice(x,0,name);
                     coachFound=true;
+                    console.log("else");
                 }
             }
             if(!noCoach && x==line.length-1){
                 line.push(name);
             }
-            coachFound=false; */
-        }
+            coachFound=false;
+        } 
+
+        /*This doesn't work because curName is undefinded when x exceeds line.length-1 and is also inefficient, coaches cannpt be added
+        function rule1(){
+            var x=0;
+            curName=line[x];
+            if(coaches.includes(curName)){
+                x++;
+                if(coaches.includes(curName)){
+                    x++;
+                    if(coaches.includes(curName)){
+                        x++;
+                    }
+                    else{
+                        line.splice(x,0,name);
+                    }
+                }
+                else{
+                    line.splice(x,0,name); 
+                    x++;
+                }
+            }
+            else{
+                line.unshift(name);
+                x++;
+            }
+        } */
 
         function rule2(){
             console.log("rule2");
