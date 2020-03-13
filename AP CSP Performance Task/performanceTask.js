@@ -19,7 +19,6 @@ $(document).ready(function(){
         var curName = "";
         
         function rule1(){
-            console.log("rule1");
             var x=0;
             while (!noCoach && x<=coaches.length-1 && x<=line.length-1){
                 curName=line[x];
@@ -38,7 +37,6 @@ $(document).ready(function(){
         } 
 
         function rule2(){
-            console.log("rule2");
             var p=0
             
             while (!found && p<=line.length-1){
@@ -67,7 +65,6 @@ $(document).ready(function(){
         
         
         function rule3(){
-            console.log("rule3");
             line.push(name);
         }
         
@@ -80,8 +77,6 @@ $(document).ready(function(){
                 skater = ""
             }
         }
-
-        console.log(unordered);
 
         for(var p=0; p<unordered.length; p++){
             name=unordered[p];
@@ -97,8 +92,6 @@ $(document).ready(function(){
                 }
             }    
         }
-        
-        console.log(line);
 
         for(var p=0; p<line.length; p++){
             $('#listBox').append("<div class='nameItem'>" + line[p] + "</div>");
