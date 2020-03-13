@@ -13,7 +13,7 @@ $(document).ready(function(){
         var unordered = [];
         var line = [];
         var coaches = ["coach", "coach1", "coach2", "coach3"];
-        found = false;
+        firstTurn = false;
         noCoach = false;
         done = false;
         var curName = "";
@@ -37,33 +37,23 @@ $(document).ready(function(){
         } 
 
         function rule2(){
-            var p=0
-            
-            while (!found && p<=line.length-1){
+            var p=line.length-1;
+            while (!firstTurn && p>=0){
                 removedName=line[p];
                 line.splice(p,1);
-                if(line.includes(removedName)){
-                    var newP= line.indexOf(removedName);
+                if(line.indexOf(removedName)<p && line.indexOf(removedName)>=0){
                     line.splice(p,0,removedName);
-                    line.splice(newP+1,0,name);
-                    found=true;
-                    done=true;
+                    p--;
                 }
                 else{
                     line.splice(p,0,removedName);
-                    p++
-                }
-            } 
-            if(line.indexOf(name)<0 && !done){
-                line.push(name);
+                    line.splice(p+1,0,name);
+                    firstTurn=true;
+                }       
             }
-            else{
-                done=false;
-            }
-            found=false
+            firstTurn=false;
         }
-        
-        
+         
         function rule3(){
             line.push(name);
         }
