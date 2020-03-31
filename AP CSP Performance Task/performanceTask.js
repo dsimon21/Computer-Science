@@ -3,13 +3,18 @@ $(document).ready(function(){
         $('#listBox').text('');
         myFunction(); 
     });
+
+    $(".nameItem").click(function(){
+        //confirm("are you sure?");
+        //remove
+    });
     
     function myFunction() {
         var origText = $("#nameBox").val();
         var text = origText.toLowerCase();
         var name = "";
         var skater = "";
-        var alphabet = "abcdefghijklmnopqrstuvwxyz123456789'";
+        var alphabet = "abcdefghijklmnopqrstuvwxyz123456789,/!?:<>-_+=*&#'";
         var unordered = [];
         var line = [];
         var coaches = ["coach", "coach1", "coach2", "coach3"];
@@ -17,6 +22,7 @@ $(document).ready(function(){
         noCoach = false;
         done = false;
         var curName = "";
+        var ending = ";"
         
         function rule1(){
             var x=0;
@@ -63,7 +69,7 @@ $(document).ready(function(){
                 skater += text.charAt(pointer);
             }
             else{
-                if(skater.length>0) unordered.push(skater);
+                if(ending.indexOf(text.charAt(pointer))>=0) unordered.push(skater);
                 skater = ""
             }
         }
