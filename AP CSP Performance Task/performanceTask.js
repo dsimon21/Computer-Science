@@ -5,8 +5,8 @@ $(document).ready(function(){
     });
 
     $(".nameItem").click(function(){
-        //confirm("are you sure?");
-        //remove
+        confirm("are you sure?");
+        console.log("clicked");
     });
     
     function myFunction() {

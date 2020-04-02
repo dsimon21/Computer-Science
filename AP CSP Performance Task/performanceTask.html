@@ -5,13 +5,7 @@
             body{
                 background-color: #FFF; 
             }
-            #spaceBox1{
-                width: 300px;
-                height: 20px;
-                display: inline-block;
-                border: 2px;
-            }
-            #spaceBox2{
+            .spaceBox{
                 width: 300px;
                 height: 20px;
                 display: inline-block;
@@ -47,7 +41,7 @@
                 border-bottom: 1px dotted black;
                 padding: 2px;
                 box-sizing: border-box;
-                onclick
+                cursor: pointer;
             }
             
         </style>
@@ -62,7 +56,7 @@
             <th><font size="5">Centennial Ice Arena's Music Line</font></th>
         </tr>
         <tr>
-            <th> <div id='spaceBox1'></div></th>
+            <th> <div id='spaceBox1' class='spaceBox'></div></th>
         </tr>
         <tr>
             <th>RULES:</th>
@@ -81,7 +75,7 @@
 
     <table style="width:100%">
         <tr>
-            <th columnspan="2"><div id='spaceBox2'></div></th>
+            <th columnspan="2"><div id='spaceBox2' class='spaceBox'></div></th>
         </tr>
         <tr>
             <th> Type in names followed by a ; </th>
