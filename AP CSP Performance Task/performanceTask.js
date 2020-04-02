@@ -3,11 +3,6 @@ $(document).ready(function(){
         $('#listBox').text('');
         myFunction(); 
     });
-
-    $(".nameItem").click(function(){
-        confirm("are you sure?");
-        console.log("clicked");
-    });
     
     function myFunction() {
         var origText = $("#nameBox").val();
