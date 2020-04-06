@@ -3,96 +3,49 @@ $(document).ready(function(){
         $('#listBox').text('');
         myFunction(); 
     });
+
+    var line = [];
+    
+    function checkLine() {
+         return line.s;
+    }
     
     function myFunction() {
-        var origText = $("#nameBox").val();
-        var text = origText.toLowerCase();
-        var name = "";
-        var skater = "";
-        var alphabet = "abcdefghijklmnopqrstuvwxyz123456789,/!?:<>-_+=*&#'";
-        var unordered = [];
-        var line = [];
-        var coaches = ["coach", "coach1", "coach2", "coach3"];
-        firstTurn = false;
-        noCoach = false;
-        done = false;
-        var curName = "";
-        var ending = ";"
+        var skater = ($("#nameBox").val()).toLowerCase();
+        var coaches = ["coach", "coach1", "coach2", "coach3"]
         
         function rule1(){
-            var x=0;
-            while (!noCoach && x<=coaches.length-1 && x<=line.length-1){
-                curName=line[x];
-                if(coaches.includes(curName)){
-                    x++;
-                }
-                else{
-                    line.splice(x,0,name);
-                    noCoach=true;
-                }
-            }
-            if(!noCoach && x==line.length-1){
-                line.push({n: name, o:true});
-            }
-            noCoach=false;
+            console.log("rule1");
         } 
 
         function rule2(){
-            var p=line.length-1;
-            while (!firstTurn && p>=0){
-                removedName=line[p];
-                line.splice(p,1);
-                if(line.indexOf(removedName)<p && line.indexOf(removedName)>=0){
-                    line.splice(p,0,removedName);
-                    p--;
-                }
-                else{
-                    line.splice(p,0,removedName);
-                    line.splice(p+1,0,name);
-                    firstTurn=true;
-                }       
-            }
-            firstTurn=false;
+            console.log("rule2");
         }
          
         function rule3(){
-            line.push(name);
+            console.log("rule3")
+            line.push({s: skater, a: true});
         }
         
-        for(var pointer=0; pointer<text.length; pointer++){
-            if(alphabet.indexOf(text.charAt(pointer))>=0){
-                skater += text.charAt(pointer);
+        if((line.findIndex(checkLine))>=0 || line.length==0){
+            rule3();
+        }
+        else{
+            if(coaches.includes(skater)){
+                rule1();
             }
             else{
-                if(ending.indexOf(text.charAt(pointer))>=0) unordered.push(skater);
-                skater = ""
+                rule2();
             }
-        }
+        }    
+    }
 
-        for(var p=0; p<unordered.length; p++){
-            name=unordered[p];
-            if(line.includes(name) || line.length==0){
-                rule3();
-            }
-            else{
-                if(coaches.includes(name)){
-                    rule1();
-                }
-                else{
-                    rule2();
-                }
-            }    
-        }
-
-        for(var p=0; p<line.length; p++){
+        /*for(var p=0; p<line.length; p++){
             $('#listBox').append("<div class='nameItem'>" + line[p] + "</div>");
-        }
+        } */
 
     $(".nameItem").click(function(){
-        confirm("are you sure?");
-        console.log("clicked");
+        confirm("Are you sure you would like to be taken out of line?");
     });
-
-    }
 
 });
