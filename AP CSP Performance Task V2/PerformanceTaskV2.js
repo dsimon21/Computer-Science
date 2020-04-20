@@ -6,8 +6,8 @@ $(document).ready(function(){
 
     var line = [];
     
-    function checkLine() {
-         return line.s;
+    function checkSkater() {
+        return ($("#nameBox").val()).toLowerCase();
     }
     
     function myFunction() {
@@ -27,7 +27,9 @@ $(document).ready(function(){
             line.push({s: skater, a: true});
         }
         
-        if((line.findIndex(checkLine))>=0 || line.length==0){
+        if((line.findIndex(checkSkater))>=0 || line.length==0){
+            console.log(line);
+            console.log(line.findIndex(checkSkater));
             rule3();
         }
         else{
