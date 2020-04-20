@@ -6,10 +6,6 @@ $(document).ready(function(){
 
     var line = [];
     
-    function checkSkater() {
-        return ($("#nameBox").val()).toLowerCase();
-    }
-    
     function myFunction() {
         var skater = ($("#nameBox").val()).toLowerCase();
         var coaches = ["coach", "coach1", "coach2", "coach3"]
@@ -25,6 +21,10 @@ $(document).ready(function(){
         function rule3(){
             console.log("rule3")
             line.push({s: skater, a: true});
+        }
+
+        function checkSkater() {
+            return line.s == skater;
         }
         
         if((line.findIndex(checkSkater))>=0 || line.length==0){
