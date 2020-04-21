@@ -41,7 +41,8 @@ $(document).ready(function(){
             var firstTurn=false;
 
             function checkTurn(line) {
-                return line[p].s == removedName;
+                console.log(p, line);
+                return line[p-1].s == removedName;
             }
 
             while (!firstTurn && p>=0){
