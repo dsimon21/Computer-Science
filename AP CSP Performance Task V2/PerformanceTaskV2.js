@@ -20,7 +20,7 @@ $(document).ready(function(){
             var noCoach = false;
             var curName = "";
             while (!noCoach && x<=coaches.length-1 && x<=line.length-1){
-                curName = line[x].s
+                curName = line[x].s;
                 if(coaches.includes(curName)){
                     x++;
                 }
@@ -37,11 +37,16 @@ $(document).ready(function(){
 
         function rule2(){
             console.log("rule2");
+            for(var i=0; i<line.length; i++)
+                console.log(line[i].s);
             var p=line.length-1;
             var firstTurn=false;
 
             function checkTurn(line) {
-                return line[p].s == removedName;
+                console.log(line);
+                console.log(line.length);
+                console.log(p);
+                return line[0].s == removedName;
             }
 
             while (!firstTurn && p>=0){
