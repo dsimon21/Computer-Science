@@ -6,16 +6,16 @@ $(document).ready(function(){
 
     var line = [];
 
-    function checkSkater(line, skater) {
+    function checkSkater(skater) {
         return line.s == skater;
     }
 
-    function checkTurn(line, p) {
+    function checkTurn(p) {
         console.log(p, line);
         return line[p-1].s == removedName;
     }
 
-    function rule1(coaches, line){
+    function rule1(coaches){
         console.log("rule1");
         var x = 0;
         var noCoach = false;
@@ -35,7 +35,7 @@ $(document).ready(function(){
         }
     } 
 
-    function rule2(line){
+    function rule2(skater){
         console.log("rule2");
         var p=line.length-1;
         var firstTurn=false;
@@ -44,6 +44,7 @@ $(document).ready(function(){
             fullRemovedName=line[p];
             line.splice(p,1);
             if(line.findIndex(checkTurn)<p && line.findIndex(checkTurn)>=0){
+                //need to send variables to checkTurn
                 line.splice(p,0,fullRemovedName);
                 p--;
             }
@@ -56,7 +57,7 @@ $(document).ready(function(){
         console.log(line);
     }
 
-    function rule3(line, skater){
+    function rule3(skater){
         console.log("rule3");
         console.log(skater);
         line.push({s: skater, a: true});
@@ -67,17 +68,19 @@ $(document).ready(function(){
         var coaches = ["coach", "coach1", "coach2", "coach3"]
 
         if((line.findIndex(checkSkater))>=0 || line.length==0){
+            //need to send variables to checkSkater
             console.log(skater);
-            rule3();
+            rule3(skater);
         }
         else{
             if(coaches.includes(skater)){
-                rule1();
+                rule1(coaches);
             }
             else{
-                rule2();
+                rule2(skater);
             }
-        }    
+        } 
+        console.log(line);   
     }
 
     /*for(var p=0; p<line.length; p++){
