@@ -41,14 +41,14 @@ function myFunction() {
         
 }
 
-function checkSkater(skater) {
-    console.log(skater);
-    return line.s == skater;
+function checkSkater(names) {
+    return names.s == this;
 }
 
 function checkTurn(p) {
     console.log(p, line);
-    return line[p-1].s == removedName;
+    return line.s[p-1] == removedName;
+    //fix checkTurn to be like checkSkater
 }
 
 function rule1(coaches){
