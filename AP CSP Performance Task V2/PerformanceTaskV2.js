@@ -15,10 +15,10 @@ var line = [];
 
 function myFunction() {
     var skater = ($("#nameBox").val()).toLowerCase();
+    //set value of box to empty
     var coaches = ["coach", "coach1", "coach2", "coach3"]
 
-    if((line.findIndex(checkSkater))>=0 || line.length==0){
-        //need to send variables to checkSkater
+    if((line.findIndex(checkSkater, skater))>=0 || line.length==0){
         console.log(skater);
         rule3(skater);
     }
@@ -32,21 +32,23 @@ function myFunction() {
     } 
     console.log(line); 
         
-    for(var p=0; p<line.length; p++){
-        $('#listBox').append("<div class='nameItem'>" + line.[p]s + "</div>");
-        //add the if statement to make sure a=true;
-    } 
+    /*for(var p=0; p<line.length; p++){
+        //issue in here
+        if(line.a[p]){
+            $('#listBox').append("<div class='nameItem'>" + line.s[p] + "</div>");
+        }
+    }*/
+        
 }
 
 function checkSkater(skater) {
+    console.log(skater);
     return line.s == skater;
-    //this needs to inside a function
 }
 
 function checkTurn(p) {
     console.log(p, line);
     return line[p-1].s == removedName;
-    //this needs to go inside a function
 }
 
 function rule1(coaches){
@@ -77,8 +79,7 @@ function rule2(skater){
         removedName=line[p].s;
         fullRemovedName=line[p];
         line.splice(p,1);
-        if(line.findIndex(checkTurn)<p && line.findIndex(checkTurn)>=0){
-            //need to send variables to checkTurn
+        if(line.findIndex(checkTurn, skater)<p && line.findIndex(checkTurn, skater)>=0){
             line.splice(p,0,fullRemovedName);
             p--;
         }
