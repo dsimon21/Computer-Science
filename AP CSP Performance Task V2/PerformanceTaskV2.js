@@ -12,7 +12,6 @@ $(document).ready(function(){
 });
 
 var line = [];
-var p=line.length-1;
 
 function myFunction() {
     var skater = ($("#nameBox").val()).toLowerCase();
@@ -42,15 +41,10 @@ function myFunction() {
         
 }
 
-function checkSkater(array) {
-    return array.s == name;
-    console.log("in");
+function checkSkater(skater) {
+    return skater.s == this;
 }
 
-function checkTurn(array1) {
-    return array1.s[p-1] == nameSent;
-    //fix checkTurn to be like checkSkater
-}
 
 function rule1(coaches){
     console.log("rule1");
@@ -75,15 +69,19 @@ function rule1(coaches){
 function rule2(skater){
     console.log("rule2");
     var firstTurn=false;
+    var p=line.length-1;
+
     while (!firstTurn && p>=0){
         removedName=line[p].s;
         fullRemovedName=line[p];
         line.splice(p,1);
-        if(line.findIndex(checkTurn, removedName)<p && line.findIndex(checkTurn, removedName)>=0){
+        if(line.findIndex(checkSkater, removedName)<p && line.findIndex(checkSkater, removedName)>=0){
+            console.log(line.findIndex(checkSkater, removedName));
             line.splice(p,0,fullRemovedName);
             p--;
         }
         else{
+            console.log(line.findIndex(checkSkater, removedName));
             line.splice(p,0,fullRemovedName);
             line.splice(p+1,0,{s: skater, a: true});
             firstTurn=true;
