@@ -4,11 +4,6 @@ $(document).ready(function(){
         myFunction(); 
     });
 
-    $(".nameItem").click(function(){
-        confirm("Are you sure you would like to be taken out of line?");
-    });
-    //this will need to be moved because .nameItem hasn't been created yet
-
 });
 
 var line = [];
@@ -31,13 +26,13 @@ function myFunction() {
         }
     } 
     console.log(line); 
-        
-    /*for(var y=0; y<line.length; y++){
-        //issue in here
-        if(line.a[y]){
+    console.log(line.a[0]);
+    
+    for(var y=0; y<line.length; y++){
+        if(line.a[y]==true){
             $('#listBox').append("<div class='nameItem'>" + line.s[y] + "</div>");
         }
-    }*/
+    }
         
 }
 
@@ -95,3 +90,7 @@ function rule3(skaterName){
     console.log(skaterName);
     line.push({s: skaterName, a: true});
 }
+
+$(".nameItem").click(function(){
+    confirm("Are you sure you would like to be taken out of line?");
+});
