@@ -12,6 +12,7 @@ $(document).ready(function(){
 });
 
 var line = [];
+var p=line.length-1;
 
 function myFunction() {
     var skater = ($("#nameBox").val()).toLowerCase();
@@ -19,10 +20,10 @@ function myFunction() {
     var coaches = ["coach", "coach1", "coach2", "coach3"]
 
     if((line.findIndex(checkSkater, skater))>=0 || line.length==0){
-        console.log(skater);
         rule3(skater);
     }
     else{
+        console.log(line.findIndex(checkSkater, skater));
         if(coaches.includes(skater)){
             rule1(coaches);
         }
@@ -32,22 +33,22 @@ function myFunction() {
     } 
     console.log(line); 
         
-    /*for(var p=0; p<line.length; p++){
+    /*for(var y=0; y<line.length; y++){
         //issue in here
-        if(line.a[p]){
-            $('#listBox').append("<div class='nameItem'>" + line.s[p] + "</div>");
+        if(line.a[y]){
+            $('#listBox').append("<div class='nameItem'>" + line.s[y] + "</div>");
         }
     }*/
         
 }
 
-function checkSkater(names) {
-    return names.s == this;
+function checkSkater(array) {
+    return array.s == name;
+    console.log("in");
 }
 
-function checkTurn(p) {
-    console.log(p, line);
-    return line.s[p-1] == removedName;
+function checkTurn(array1) {
+    return array1.s[p-1] == nameSent;
     //fix checkTurn to be like checkSkater
 }
 
@@ -73,13 +74,12 @@ function rule1(coaches){
 
 function rule2(skater){
     console.log("rule2");
-    var p=line.length-1;
     var firstTurn=false;
     while (!firstTurn && p>=0){
         removedName=line[p].s;
         fullRemovedName=line[p];
         line.splice(p,1);
-        if(line.findIndex(checkTurn, skater)<p && line.findIndex(checkTurn, skater)>=0){
+        if(line.findIndex(checkTurn, removedName)<p && line.findIndex(checkTurn, removedName)>=0){
             line.splice(p,0,fullRemovedName);
             p--;
         }
