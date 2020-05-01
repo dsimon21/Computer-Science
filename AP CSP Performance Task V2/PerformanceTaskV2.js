@@ -14,20 +14,20 @@ $(document).ready(function(){
 var line = [];
 
 function myFunction() {
-    var skater = ($("#nameBox").val()).toLowerCase();
+    var skaterName = ($("#nameBox").val()).toLowerCase();
     //set value of box to empty
     var coaches = ["coach", "coach1", "coach2", "coach3"]
 
-    if((line.findIndex(checkSkater, skater))>=0 || line.length==0){
-        rule3(skater);
+    if((line.findIndex(checkSkater, skaterName))>=0 || line.length==0){
+        rule3(skaterName);
     }
     else{
-        console.log(line.findIndex(checkSkater, skater));
-        if(coaches.includes(skater)){
-            rule1(coaches);
+        console.log(line.findIndex(checkSkater, skaterName));
+        if(coaches.includes(skaterName)){
+            rule1(coaches, skaterName);
         }
         else{
-            rule2(skater);
+            rule2(skaterName);
         }
     } 
     console.log(line); 
@@ -46,10 +46,10 @@ function checkSkater(skater) {
 }
 
 
-function rule1(coaches){
+function rule1(coaches, skaterName){
     console.log("rule1");
     var x = 0;
-    var noCoach = false;
+    var noCoach = false;x
     var curName = "";
     while (!noCoach && x<=coaches.length-1 && x<=line.length-1){
         curName = line[x].s
@@ -57,16 +57,16 @@ function rule1(coaches){
             x++;
         }
         else{
-            line.splice(x,0,{s: skater, a: true});
+            line.splice(x,0,{s: skaterName, a: true});
             noCoach=true;
         }
     }
     if(!noCoach && x==line.length-1){
-        line.push({s: skater, a: true});
+        line.push({s: skaterName, a: true});
     }
 } 
 
-function rule2(skater){
+function rule2(skaterName){
     console.log("rule2");
     var firstTurn=false;
     var p=line.length-1;
@@ -83,15 +83,15 @@ function rule2(skater){
         else{
             console.log(line.findIndex(checkSkater, removedName));
             line.splice(p,0,fullRemovedName);
-            line.splice(p+1,0,{s: skater, a: true});
+            line.splice(p+1,0,{s: skaterName, a: true});
             firstTurn=true;
         }       
     }
     console.log(line);
 }
 
-function rule3(skater){
+function rule3(skaterName){
     console.log("rule3");
-    console.log(skater);
-    line.push({s: skater, a: true});
+    console.log(skaterName);
+    line.push({s: skaterName, a: true});
 }
