@@ -29,10 +29,14 @@ function myFunction() {
     console.log(line.a[0]);
     
     for(var y=0; y<line.length; y++){
-        if(line.a[y]==true){
-            $('#listBox').append("<div class='nameItem'>" + line.s[y] + "</div>");
+        if(line[y].a==true){
+            $('#listBox').append("<div class='nameItem'>" + line[y].s + "</div>");
         }
     }
+
+    $(".nameItem").click(function(){
+        confirm("Are you sure you would like to be taken out of line?");
+    });
         
 }
 
@@ -90,7 +94,3 @@ function rule3(skaterName){
     console.log(skaterName);
     line.push({s: skaterName, a: true});
 }
-
-$(".nameItem").click(function(){
-    confirm("Are you sure you would like to be taken out of line?");
-});
