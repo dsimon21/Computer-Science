@@ -25,17 +25,18 @@ function myFunction() {
             rule2(skaterName);
         }
     } 
-    console.log(line); 
-    console.log(line.a[0]);
     
     for(var y=0; y<line.length; y++){
         if(line[y].a==true){
-            $('#listBox').append("<div class='nameItem'>" + line[y].s + "</div>");
+            $('#listBox').append("<div class='nameItem' index'" + y + "'>" + line[y].s + "</div>");
         }
     }
 
     $(".nameItem").click(function(){
         confirm("Are you sure you would like to be taken out of line?");
+        $(this).remove();
+        var index = parseInt($(this).attr("index"));
+        list[index].a = false;
     });
         
 }
