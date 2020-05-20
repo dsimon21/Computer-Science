@@ -36,7 +36,9 @@ function myFunction() {
         confirm("Are you sure you would like to be taken out of line?");
         $(this).remove();
         var index = parseInt($(this).attr("index"));
-        list[index].a = false;
+        console.log(index);
+        //line[index].a = false;
+        //error here computer says index = NaN
     });
         
 }
