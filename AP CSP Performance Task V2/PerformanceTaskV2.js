@@ -10,7 +10,7 @@ var line = [];
 
 function myFunction() {
     var skaterName = ($("#nameBox").val()).toLowerCase();
-    //set value of box to empty
+    ($("#nameBox")).value = "";
     var coaches = ["coach", "coach1", "coach2", "coach3"]
 
     if((line.findIndex(checkSkater, skaterName))>=0 || line.length==0){
