@@ -9,8 +9,8 @@ $(document).ready(function(){
 var line = [];
 
 function myFunction() {
-    var skaterName = ($("#nameBox").val()).toLowerCase();
-    ($("#nameBox")).value = "";
+    var skaterName = $("#nameBox").val().toLowerCase();
+    $("#nameBox").val("");
     var coaches = ["coach", "coach1", "coach2", "coach3"]
 
     if((line.findIndex(checkSkater, skaterName))>=0 || line.length==0){
@@ -28,7 +28,7 @@ function myFunction() {
     
     for(var y=0; y<line.length; y++){
         if(line[y].a==true){
-            $('#listBox').append("<div class='nameItem' index'" + y + "'>" + line[y].s + "</div>");
+            $('#listBox').append("<div class='nameItem' index='" + y + "'>" + line[y].s + "</div>");
         }
     }
 
@@ -37,8 +37,7 @@ function myFunction() {
         $(this).remove();
         var index = parseInt($(this).attr("index"));
         console.log(index);
-        //line[index].a = false;
-        //error here computer says index = NaN
+        line[index].a = false;
     });
         
 }
